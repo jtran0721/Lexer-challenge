@@ -17,10 +17,10 @@ def find(key):
     return output
 
 #Function to dowload images
-def download():
-    list = find('789')
+def download(key):
+    list = find(key)
     for image in list:
-        file_name = image.split('/')[-1]
+        file_name = image.split('/')[-1] + ".png"
         r = requests.get(image, stream=True)
         with open(file_name, 'wb') as f:
             for chunk in r:
@@ -28,4 +28,4 @@ def download():
     return None
 
 
-print("Download completed")
+print(download("789"))
